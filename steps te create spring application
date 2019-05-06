@@ -1,0 +1,7 @@
+steps to create spring application
+
+1.create the class
+2.create the xml file to provide the values
+3.create the test class
+4.Load the spring jar files
+5.Run the test class 
