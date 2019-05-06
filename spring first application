@@ -1,0 +1,105 @@
+Employee.java
+
+package jarina;
+
+public class Employee {
+	
+	private String name;
+	private int salary;
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public int getSalary() {
+		return salary;
+	}
+	public void setSalary(int salary) {
+		this.salary = salary;
+	}
+	
+	public void Employee_info(){
+		
+		System.out.println("employee name is:"+ name);
+		System.out.println("employee salary is:"+ salary);
+	}
+	
+}
+
+
+
+
+applicationContext.xml
+
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans  
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">  
+  
+  
+  <bean id="employeebean" class="jarina.Employee">  
+
+<property name="name" value="jarina"></property>  
+<property name="salary" value= "10000"></property>  
+
+</bean>  
+
+</beans>
+
+
+
+
+test.java
+
+package jarina;
+
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.xml.XmlBeanFactory;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
+
+public class test {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+
+		 Resource resource=new ClassPathResource("applicationContext.xml");  
+		    BeanFactory factory=new XmlBeanFactory(resource);  
+		      
+		    Employee em= (Employee)factory.getBean("employeebean");  
+		    em.Employee_info(); 
+		
+		
+	}
+
+}
+
+
+
+
+
+Note:
+
+
+output log4j:WARN No appenders could be found for logger (org.springframework.beans.factory.xml.XmlBeanDefinitionReader).
+log4j:WARN Please initialize the log4j system properly.
+employee name is:jarina
+employee salary is:10000
+
+
+
+directory structure:
+  src==>package_name==> employee.java+ test.java+ applicationContext.xml
+  
+  open the project in java perspective only
+  
+  and run as java application.
+
+
